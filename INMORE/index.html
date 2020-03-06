@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>亿茂数字园区大数据</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="./Frames/AdminLTE-2.3.5/bootstrap/css/bootstrap.min.css"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./Frames/AdminLTE-2.3.5/dist/css/AdminLTE.min.css"/>
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="./Frames/AdminLTE-2.3.5/dist/css/skins/_all-skins.min.css"/>
+
+    <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+    <link rel="stylesheet" href="index.css"/>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/echarts.min.js"></script>
+    <script charset="utf-8" src="./js/china.js"></script>
+    <script src="./js/geoCoordMap.js"></script>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="content-wrapper">
+    <div class="wrapper-box2 pad" style="background-color: transparent">
+        <!--<div class="box box-db" style="width: 100%; height: 100%;">
+            <div class="box-header">
+                园区基地
+            </div>
+            <div class="box-body" style="width: 100%; height: 100%;">
+                <div id="echart3" style="width: 100%; height: 100%;">
+                </div>
+            </div>
+        </div>-->
+    </div>
+</div>
+<div class="content-wrapper2 wrapper-position-absolute hidden">
+    abc
+</div>
+<div class="content-wrapper2 wrapper-position-absolute">
+    <header class="header-content">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="header-nav">
+                    <ul class="no-margin">
+                        <li class="active"><i class="fa fa-laptop margin-r-5"></i><a href="index.html">数据概览</a></li>
+                        <li><i class="fa fa-balance-scale margin-r-5"></i><a >消费数据</a></li>
+                        <li><i class="fa fa-bank margin-r-5"></i><a >管理数据</a></li>
+                        <li><i class="fa fa-child margin-r-5"></i><a >服务数据</a></li>
+                        <!--<li><i class="fa fa-automobile margin-r-5"></i><a >停车收费</a></li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="header-center-content pad">
+                    <h2 class="no-margin">
+                        <strong class="margin-r-5">亿茂数字园区大数据</strong>
+                    </h2>
+                    <p class="color_font">
+                        <small>CopyRight © 2019 <a href="http://www.inmore.cn" target="_black">www.inmore.cn</a>.
+                            All rights reserved.
+                        </small>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="header-nav">
+                    <ul class="no-margin">
+                        <!--<li><i class="fa fa-sitemap margin-r-5"></i><a>城市</a></li>-->
+                        <li><a >杭州</a></li>
+                        <li><a >绍兴</a></li>
+                        <li><a >衢州</a></li>
+                        <li><a >嘉兴</a></li>
+                        <li><a >淮安</a></li>
+                        <li><a >潍坊</a></li>
+                        <li><a >青岛</a></li>
+                        <li><a >济南</a></li>
+                        <li><a >南宁</a></li>
+                        <li class="text-center" style="padding:0;font-size:20px">
+                            <span class="text-yellow" id="nowTime">---</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="row margin">
+        <div class="col-sm-2 no-padding">
+            <div class="box-data">
+                <div class="info-box bg-green">
+                    <span class="info-box-icon"><i class="fa fa-wikipedia-w"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">PV</span>
+                        <span class="info-box-number">
+                                <span id="pv">1,129,100</span>
+                            </span>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-description">
+                                Page View，页面浏览量
+                            </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2 no-padding">
+            <div class="box-data">
+                <div class="info-box bg-green">
+                    <span class="info-box-icon"><i class="fa fa-street-view"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">UV</span>
+                        <span class="info-box-number" id="uv">62,410</span>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-description">
+                                Unique Visitor，独立访客数
+                            </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2 no-padding">
+            <div class="box-data">
+                <div class="info-box bg-green">
+                    <span class="info-box-icon"><i class="fa fa-vimeo"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">IP</span>
+                        <span class="info-box-number" id="ip">42,596</span>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-description">
+                                Internet Protocol，独立IP数
+                            </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2 no-padding">
+            <div class="box-data">
+                <div class="info-box bg-green">
+                    <span class="info-box-icon"><i class="fa fa-angellist"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Orders</span>
+                        <span class="info-box-number" id="orders">15,410</span>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-description">
+                                本月订单数
+                            </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2 no-padding">
+            <div class="box-data">
+                <div class="info-box bg-green">
+                    <span class="info-box-icon"><i class="fa fa-user"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text" >Users</span>
+                        <span class="info-box-number" id="users">10,410</span>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-description">
+                                新增会员数
+                            </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2 no-padding">
+            <div class="box-data">
+                <div class="info-box bg-green">
+                    <span class="info-box-icon"><i class="fa fa-money"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Turnover</span>
+                        <span class="info-box-number">
+                                <small>￥</small>
+                                <span id="turnover">177,410.00</span>
+                            </span>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-description">
+                                交易额
+                            </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row margin">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-sm-8 no-padding">
+                    <div class="box-pad">
+                        <div class="box box-db">
+                            <div class="box-header">
+                                接待
+                            </div>
+                            <div class="box-body">
+                                <div id="echart_Reception" style="width: 100%; height: 230px;;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 no-padding">
+                    <div class="box-pad">
+                        <div class="box box-db">
+                            <div class="box-header">
+                                企业
+                            </div>
+                            <div class="box-body">
+                                <div id="echart_Company" style="width: 100%; height: 230px;;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-8 no-padding">
+                    <div class="box-pad">
+                        <div class="box box-db">
+                            <div class="box-header">
+                                能耗
+                            </div>
+                            <div class="box-body">
+                                <div id="echart_Energy" style="width: 100%; height: 252px;;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 no-padding">
+                    <div class="box-pad">
+                        <div class="box box-db">
+                            <div class="box-header">
+                                最新订单
+                            </div>
+                            <div class="box-body">
+                                <div id="scrollContainer_order">
+                                    <ul  class="box-order-list">
+                                        <li class="box-order-list-item">
+                                            <p class="pull-right"><small>￥</small>20.00</p>
+                                            <p>15988****90</p>
+                                        </li>
+                                        <li class="box-order-list-item">
+                                            <div class="pull-right"><small>￥</small>20.00</div>
+                                            <div>15988****90</div>
+                                        </li>
+                                        <li class="box-order-list-item">
+                                            <div class="pull-right"><small>￥</small>20.00</div>
+                                            <div>15988****90</div>
+                                        </li>
+                                        <li class="box-order-list-item">
+                                            <div class="pull-right"><small>￥</small>20.00</div>
+                                            <div>15988****90</div>
+                                        </li>
+                                        <li class="box-order-list-item">
+                                            <div class="pull-right"><small>￥</small>20.00</div>
+                                            <div>15988****90</div>
+                                        </li>
+                                        <li class="box-order-list-item">
+                                            <div class="pull-right"><small>￥</small>20.00</div>
+                                            <div>15988****90</div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-7 no-padding">
+                    <div class="box-pad">
+                        <div class="box box-db">
+                            <div class="box-header">
+                                场景
+                            </div>
+                            <div class="box-body">
+                                <div id="echart_Scenes" style="width: 100%; height: 226px;;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5 no-padding">
+                    <div class="box-pad">
+                        <div class="box box-db">
+                            <div class="box-header">
+                                入场车辆
+                            </div>
+                            <div class="box-body">
+                                <div id="scrollContainer_car">
+                                    <ul  class="box-order-list">
+                                        <li class="box-order-list-item">
+                                            <div class="box-order-list-item text-center">
+                                                <p class="pull-right">
+                                                    <i class="fa fa-clock-o margin-r-5"></i>11:55
+                                                </p>
+                                                <p class="pull-left">
+                                                    <i class="fa fa-map-marker margin-r-5"></i>颐高创业园
+                                                </p>
+                                                <p>
+                                                    <i class="fa fa-car margin-r-5"></i>浙AG***6
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="box-order-list hidden">
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            <i class="fa fa-clock-o margin-r-5"></i>11:55
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-map-marker margin-r-5"></i>颐高创业园
+                                        </div>
+                                        <div>
+                                            <i class="fa fa-car margin-r-5"></i>浙AG***6
+                                        </div>
+                                    </div>
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            <i class="fa fa-clock-o margin-r-5"></i>11:55
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-map-marker margin-r-5"></i>颐高创业园
+                                        </div>
+                                        <div>
+                                            <i class="fa fa-car margin-r-5"></i>浙AG***6
+                                        </div>
+                                    </div>
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            <i class="fa fa-clock-o margin-r-5"></i>11:55
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-map-marker margin-r-5"></i>颐高创业园
+                                        </div>
+                                        <div>
+                                            <i class="fa fa-car margin-r-5"></i>浙AG***6
+                                        </div>
+                                    </div>
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            <i class="fa fa-clock-o margin-r-5"></i>11:55
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-map-marker margin-r-5"></i>颐高创业园
+                                        </div>
+                                        <div>
+                                            <i class="fa fa-car margin-r-5"></i>浙AG***6
+                                        </div>
+                                    </div>
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            <i class="fa fa-clock-o margin-r-5"></i>11:55
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-map-marker margin-r-5"></i>颐高创业园
+                                        </div>
+                                        <div>
+                                            <i class="fa fa-car margin-r-5"></i>浙AG***6
+                                        </div>
+                                    </div>
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            <i class="fa fa-clock-o margin-r-5"></i>11:55
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-map-marker margin-r-5"></i>颐高创业园
+                                        </div>
+                                        <div>
+                                            <i class="fa fa-car margin-r-5"></i>浙AG***6
+                                        </div>
+                                    </div>
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            <i class="fa fa-clock-o margin-r-5"></i>11:55
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-map-marker margin-r-5"></i>颐高创业园
+                                        </div>
+                                        <div>
+                                            <i class="fa fa-car margin-r-5"></i>浙AG***6
+                                        </div>
+                                    </div>
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            <i class="fa fa-clock-o margin-r-5"></i>11:55
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-map-marker margin-r-5"></i>颐高创业园
+                                        </div>
+                                        <div>
+                                            <i class="fa fa-car margin-r-5"></i>浙AG***6
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <table class="table table-bordered table-striped dataTable hidden">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>a</th>
+                                        <th>a</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="text-black">
+                                        <td>1</td>
+                                        <td>159********90</td>
+                                        <td>￥20.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>159********90</td>
+                                        <td>￥30.00</td>
+                                    </tr>
+                                    <tr class="text-black">
+                                        <td>3</td>
+                                        <td>159********90</td>
+                                        <td>￥21.00</td>
+                                    </tr>
+                                    <tr class="text-black">
+                                        <td>3</td>
+                                        <td>159********90</td>
+                                        <td>￥21.00</td>
+                                    </tr>
+                                    <tr class="text-black">
+                                        <td>3</td>
+                                        <td>159********90</td>
+                                        <td>￥21.00</td>
+                                    </tr>
+                                    <tr class="text-black">
+                                        <td>3</td>
+                                        <td>159********90</td>
+                                        <td>￥21.00</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-xs-8 no-padding">
+                    <div class="box-pad">
+                        <div class="box box-db">
+                            <div class="box-header">
+                                园区基地
+                            </div>
+                            <div class="box-body">
+                                <div id="echart3" style="width: 100%; height: 534px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 no-padding">
+                    <div class="box-pad">
+                        <div class="box box-db">
+                            <div class="box-header">
+                                园区基地类型分布
+                            </div>
+                            <div class="box-body">
+                                <div id="echart_Type" style="width: 100%; height: 534px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-10 no-padding">
+                    <div class="box-pad">
+                        <div class="box box-db">
+                            <div class="box-header">
+                                园区基地荣誉
+                            </div>
+                            <div class="box-body">
+                                <div id="echart_Honor" style="width: 100%; height: 226px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2 no-padding">
+                    <div class="box-pad">
+                        <div class="box box-db">
+                            <div class="box-header">
+                                园区基地物业
+                            </div>
+                            <div class="box-body">
+                                <div id="scrollContainer_park">
+                                    <ul  class="box-order-list">
+                                        <li class="box-order-list-item clearfix">
+                                            <div class="box-order-list-item text-center">
+                                                <p class="pull-right">
+                                                    286
+                                                </p>
+                                                <p class="pull-left">
+                                                    <i class="fa fa-diamond margin-r-5"></i>园区基地(个)
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="box-order-list hidden">
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            24
+                                            <small></small>
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-street-view margin-r-5"></i>省份覆盖(省)
+                                        </div>
+                                        <div>&nbsp;</div>
+                                    </div>
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            151
+                                            <small></small>
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-street-view margin-r-5"></i>城市覆盖(城)
+                                        </div>
+                                        <div>&nbsp;</div>
+                                    </div>
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            123,456,789
+                                            <small></small>
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-university margin-r-5"></i>物业面积(m²)
+                                        </div>
+                                        <div>&nbsp;</div>
+                                    </div>
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            234,567
+                                            <small></small>
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-lock margin-r-5"></i>独立办公室(个)
+                                        </div>
+                                        <div>&nbsp;</div>
+                                    </div>
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            1,234,567
+                                            <small></small>
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-unlock margin-r-5"></i>开放工位(个)
+                                        </div>
+                                        <div>&nbsp;</div>
+                                    </div>
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            234,567
+                                            <small></small>
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-registered margin-r-5"></i>注册地址(个)
+                                        </div>
+                                        <div>&nbsp;</div>
+                                    </div>
+                                    <div class="box-order-list-item text-center">
+                                        <div class="pull-right">
+                                            234,567
+                                            <small></small>
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-automobile margin-r-5"></i>停车位(个)
+                                        </div>
+                                        <div>&nbsp;</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery 2.2.3
+<script src="./Frames/AdminLTE-2.3.5/plugins/jQuery/jquery-2.2.3.min.js"></script>-->
+<!-- Bootstrap 3.3.6 -->
+<script src="./Frames/AdminLTE-2.3.5/bootstrap/js/bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="./Frames/AdminLTE-2.3.5/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="./Frames/AdminLTE-2.3.5/plugins/fastclick/fastclick.js"></script>
+
+<!-- AdminLTE App -->
+<script src="./Frames/AdminLTE-2.3.5/dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="./Frames/AdminLTE-2.3.5/dist/js/demo.js"></script>
+
+<style>
+</style>
+</body>
+
+</html>
+
+<script src="./Frames/echarts/echarts-liquidfill-master/dist/echarts-liquidfill.min.js"></script>
+<script src="./js/scroll.js"></script>
+<script src="./js/md5.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script type="text/javascript">
+    var uploadedDataURL = "./Frames/echarts/Map/zhejiang.json";
+
+    var myChart = echarts.init(document.getElementById('echart3'));
+    var echart_Scenes = echarts.init(document.getElementById('echart_Scenes'));
+    var echart_Energy = echarts.init(document.getElementById('echart_Energy'));
+    var echart_Reception = echarts.init(document.getElementById('echart_Reception'));
+    var echart_Company = echarts.init(document.getElementById('echart_Company'));
+    var echart_Honor = echarts.init(document.getElementById('echart_Honor'));
+    var echart_Type = echarts.init(document.getElementById('echart_Type'));
+    window.addEventListener("resize", function () {
+        myChart.resize();
+        echart_Energy.resize();
+        echart_Scenes.resize();
+        echart_Reception.resize();
+        echart_Company.resize();
+        echart_Honor.resize();
+        echart_Type.resize();
+    });
+
+    /*时间*/
+    function getNowDate() {//获取当前日期并格式转化
+        let myDate = new Date;
+        let Y = myDate.getFullYear(); //获取当前年
+        let M = myDate.getMonth() + 1 < 10 ? '0' + (myDate.getMonth() + 1) : myDate.getMonth() + 1; //获取当前月
+        let D = myDate.getDate() < 10 ? '0' + myDate.getDate() : myDate.getDate(); //获取当前日
+        let hours=myDate.getHours() <10 ? '0' +myDate.getHours() : myDate.getHours();//小时
+        let minute=myDate.getMinutes() < 10 ? '0' + myDate.getMinutes() : myDate.getMinutes();//分
+        let second=myDate.getSeconds() < 10 ? '0' + myDate.getSeconds() : myDate.getSeconds();//秒
+        $('#nowTime').html(hours + ':' + minute + ':' + second);
+        $('#nowDate').html(Y + '-' + M + '-' + D);//暂无
+    };
+    setInterval(function(){//当前时间
+        getNowDate();
+    },1000);
+
+    $('#scrollContainer_order').myScroll({//交易订单的滚动
+        speed: 50, //数值越大，速度越慢
+        rowHeight: 240 //li的高度
+    });
+    $('#scrollContainer_car').myScroll({//入场车辆的滚动
+        speed: 50, //数值越大，速度越慢
+        rowHeight: 240 //li的高度
+    });
+
+
+
+    // /*一些公用的参数*/
+    // var appid = '165721';
+    // var stamp = Math.round(new Date()/1000).toString();
+    // let signSs = '165721' + stamp + '42eeea75ce7691aa52e8335ba7c6c9d6';
+    // var sign = $.md5(signSs); //签名
+
+
+
+
+</script>
+<script src="./js/getDate.js"></script>
+
+<script src="./js/Energy.js"></script><!--能耗-->
+<script src="./js/Scenes.js"></script><!--场景-->
+<script src="./js/Reception.js"></script><!--接待-->
+<script src="./js/Company.js"></script><!--企业-->
+<script src="./js/Honor.js"></script><!--荣誉-->
+<script src="./js/Regional.js"></script><!--中间园区基地-->
+<script src="./js/Type.js"></script><!--园区基地类型分布-->

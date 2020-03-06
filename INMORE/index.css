@@ -1,0 +1,235 @@
+body {
+    background-color: #081832;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    position: relative;
+}
+
+.content-wrapper {
+    height: 100%;
+    padding: 190px 33.33333% 1.35% 33.33333%!important;
+    background-color: #000;
+    margin: 0!important;
+}
+
+.content-wrapper2 {
+    height: 100%;
+}
+
+.wrapper-box2 {
+    display: block;
+    height: 100%;
+}
+
+.wrapper-box {
+    display: block;
+    height: 100%;
+}
+
+.wrapper-position-absolute {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+}
+
+.wrapper-box [class^=col-] {
+    padding: 0;
+    height: 100%;
+}
+
+.wrapper-box-top {
+    height: 45%;
+}
+
+.wrapper-box-bottom {
+    height: 55%;
+}
+
+.wrapper-box-top-mds {
+    height: 44.5%;
+}
+
+.wrapper-box-top-25 {
+    height: 55.5%;
+}
+
+.wrapper-box-top-20 {
+    height: 44.5%;
+}
+
+
+.header-content > div.row {
+    background-color: #030829;
+}
+.header-center-content {
+    margin: 0px auto;
+    color: #FFFFff;
+    text-align: center;
+    height: 80px;
+    background-image: url("./images/logoBg.png");
+    background-size: 100% 100%;
+    font-family: "微软雅黑"!important;
+}
+.header-center-content > p {
+    margin-top: 6px;
+    color: #e8f7fe !important;
+    font-size: 10px!important;
+}
+.header-nav > ul {
+    font-size: 14px;
+    padding-left: 15px!important;
+}
+.header-nav > ul > li {
+    display: inline-block;
+    width: auto;
+    padding-right: 15px;
+    padding-left: 13px;
+    text-align: center;
+    height: 50px;
+    position: relative;
+    line-height: 50px;
+    margin-top: 15px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+    /*box-shadow: -5px 0px 5px #034c6a inset;*/
+    /*0px -5px 15px #034c6a inset, */
+    /*5px 0px 15px #034c6a inset, */
+    /*0px 5px 15px #034c6a inset;*/
+
+    border-radius: 5px;
+}
+.header-nav > ul > li:hover{
+    box-shadow: -10px 0px 15px #034c6a inset, 
+    0px -10px 15px #034c6a inset, 
+    10px 0px 15px #034c6a inset, 
+    0px 10px 15px #034c6a inset;
+
+    box-sizing: border-box;
+}
+.header-nav > ul > li i{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    position: relative;
+    top:0px;
+    color: white;
+    margin-right: 5px;
+}
+.header-nav > ul > li a{
+    color: #ffffff;
+    /*display: inline-block;*/
+    /*padding: 0 15px 0 5px;*/
+    font-size: 14px;
+}
+.header-nav > ul > li.active {
+    border-bottom: 4px solid #4b8df8;
+    box-shadow: -10px 0px 15px #034c6a inset, /**/
+    0px -10px 15px #034c6a inset, /**/
+    10px 0px 15px #034c6a inset, /**/
+    0px 10px 15px #034c6a inset;
+
+    box-sizing: border-box;
+}
+
+.box-pad {
+    padding: 0 2px;
+}
+
+.box-data {
+    /*height: 98px;
+    background-color: #034c6a;*/
+    padding: 5px 3px;
+}
+.box-data .bg-green {
+    background-color: #034c6a!important;
+    margin: 0;
+}
+.box-data .info-box-icon {
+    color: #ffff43;
+    width: 80px!important;
+    background-color: #034c6a!important;
+}
+.box-data .info-box-content {
+    margin-left: 70px!important;
+}
+.box-data .info-box-number {
+    font-size: 26px;
+    color: #ffff43;
+    font-weight: 600;
+}
+.box-data .progress {
+    margin: 0!important;
+    height: 1px!important;
+}
+.box-data .progress-description {
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+
+.box-db {
+    width: 100%;
+    min-height: 100px;
+    box-shadow: -5px 0px 6px #034c6a inset, 
+    0px -5px 6px #034c6a inset, 
+    5px 0px 6px #034c6a inset, 
+    0px 5px 6px #034c6a inset;
+    border: 1px solid #034c6a;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 25px;
+    background-color: transparent;
+    margin-bottom: 5px;
+}
+.box-db .box-header {
+    background-color: #034c6a;
+    border-radius: 18px;
+    position: absolute;
+    height: 35px;
+    width: 60%;
+    top: -15px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    left: 20%;
+    line-height: 35px;
+    text-align: center;
+    padding: 0;
+}
+.box-db .box-body {
+    color: #fff;
+    height: 100%;
+    margin: 15px 5px 5px 5px!important;
+    padding: 0;
+}
+
+
+.box-order-list {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    padding: 7px 2px 3px 2px;
+    max-height: 252px;
+}
+.box-order-list-item{
+    padding: 5px 5px;
+}
+#scrollContainer_order{
+    height:252px;
+    overflow: hidden;
+}
+#scrollContainer_car,#scrollContainer_park{
+    height:226px;
+    overflow: hidden;
+}
+ul li{
+    list-style: none;
+}
